@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^index/([^/\.]+).html/?$ index.php?module=index&controller=index&action=$1 [L]
+RewriteRule ^([^/\.]+).html/?$ index.php?module=index&controller=index&action=$1 [L]
+
+RewriteRule ^index/([^/\.]+)/?$ index.php?module=index&controller=index&action=$1
+RewriteRule ^([^/\.]+)/?$ index.php?module=$1 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/?$ index.php?module=$1&controller=$2 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ index.php?module=$1&controller=$2&action=$3 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+).html/?$ index.php?module=$1&controller=$2&action=$3 [L]
+RewriteRule ^.*$ index.php [NC,L]
